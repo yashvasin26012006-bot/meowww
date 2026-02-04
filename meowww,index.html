@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sana 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(180deg, #ffe6eb, #ffd1dc);
+      font-family: "Comic Sans MS", "Comic Neue", cursive;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      width: 90%;
+      max-width: 360px;
+      padding: 30px 20px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .cat {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100%;
+      font-size: 1.3rem;
+      padding: 16px;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    #yes {
+      background: #ff6f91;
+      color: white;
+    }
+
+    #no {
+      background: #f3f3f3;
+      color: #555;
+      position: relative;
+    }
+
+    .float {
+      position: absolute;
+      bottom: -40px;
+      animation: floatUp 8s linear infinite;
+      font-size: 1.5rem;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="cat">🐱💘</div>
+    <h1>Will you be my Valentine, Sana?</h1>
+
+    <button id="yes" onclick="sayYes()">Yes pls 🐾💖</button>
+    <button id="no" onclick="moveNo()">No 😼</button>
+  </div>
+
+  <script>
+    function sayYes() {
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          text-align:center;
+          background:linear-gradient(180deg,#ffe6eb,#ffd1dc);
+          font-family:'Comic Sans MS', cursive;
+        ">
+          <div>
+            <div style="font-size:4rem;">🐱💖🐱</div>
+            <h1 style="font-size:2rem;">
+              Sana said YES!!! 😭💘
+            </h1>
+            <p style="font-size:1.2rem;">
+              This cat is very happy now 🐾
+            </p>
+          </div>
+        </div>
+      `;
+    }
+
+    function moveNo() {
+      const btn = document.getElementById("no");
+      const x = Math.random() * 60 - 30;
+      const y = Math.random() * 20;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    // floating cat hearts
+    setInterval(() => {
+      const el = document.createElement("div");
+      el.className = "float";
+      el.innerText = Math.random() > 0.5 ? "🐱" : "💖";
+      el.style.left = Math.random() * 100 + "vw";
+      el.style.animationDuration = 6 + Math.random() * 4 + "s";
+      document.body.appendChild(el);
+
+      setTimeout(() => el.remove(), 10000);
+    }, 600);
+  </script>
+
+</body>
+</html>
